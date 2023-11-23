@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 { 
+    text-align: center;
+}
+
+.Circles {
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.MainNumber {
+    margin-right: 10px;
+    margin-left: 45vh;
+    width: 70px;
+    height: 70px;
+    border: 2px solid;
+    border-radius: 50%;
+    line-height: 37px;
+    text-align: center;
+}
+
+.Number2 {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    border: 2px solid;
+    border-radius: 50%;
+    line-height: 37px;
+    text-align: center;
+}
+
+.Number3 {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    border: 2px solid;
+    border-radius: 50%;
+    line-height: 37px;
+    text-align: center;
+}
+
+.Number4 {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    border: 2px solid;
+    border-radius: 50%;
+    line-height: 37px;
+    text-align: center;
+}
+
+.Number5 {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    border: 2px solid;
+    border-radius: 50%;
+    line-height: 37px;
+    text-align: center;
+}
+
+
+table {
+    border: 2px solid rgba(215, 16, 16, 0.798);
+    border-collapse: collapse;
+    width: 454px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-left: 53vh;
+}
+
+
+tr {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(1, 50px); 
+}
+
+td {
+    
+}
