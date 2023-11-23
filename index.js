@@ -130,5 +130,5 @@ const renderTable = (curTable) => { // FIXME move after functions used   DONE
 }
 
 renderTable('table1')
-//renderTable('table2')
-//	renderTable('table3')
+renderTable('table2')
+renderTable('table3')

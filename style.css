@@ -69,14 +69,14 @@ h1 {
 
 
 table {
-    border: 2px solid rgba(215, 16, 16, 0.798);
+    border: 1px solid black;
     border-collapse: collapse;
-    width: 454px;
+    width: 452px;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 10px;
     cursor: pointer;
-    margin-left: 53vh;
+    margin-left: 62vh;
 }
 
 
@@ -87,5 +87,8 @@ tr {
 }
 
 td {
-    
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
