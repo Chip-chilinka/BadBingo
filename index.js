@@ -1,4 +1,3 @@
-
 function GetRandomNumber(min, max) {
 	min = Math.ceil(min)
     max = Math.floor(max)
@@ -68,11 +67,14 @@ const renderCell = (cells, table) => {
 	const rows = table.querySelectorAll('tr')
 	rows.forEach((element) => {
 		// Переменная чекер, которая позволит выйти из цикла, когда отобразим достаточное кол-во ячеек
-		let enoughCells = 0
-		while (enoughCells < cells) { // FIXME make for
+		// while (enoughCells < cells) { //        FIXME make for					DONE
+		// 	let td = document.createElement('td')
+		// 	element.appendChild(td)
+		// 	enoughCells++
+		// }
+		for (let enoughCells = 0; enoughCells < cells; enoughCells++){
 			let td = document.createElement('td')
 			element.appendChild(td)
-			enoughCells++
 		}
 	})
 }
@@ -109,13 +111,17 @@ const setRandomCount = (cellPos, totalCells) => {
 	for (let i = 1; i < totalCells; i++) {
 		hashMapCells[i] = [min, max]
 		min = min + 10
-		max = max + 10 // TODO support 90 in last column
+		max = max + 10
+		if (max == 90){
+			max += 1
+		} // TODO support 90 in last colum             DONE
 	}
 	// Проходимся по ключам в нашей структуре данных
 	for (key in hashMapCells) {
-		// Если текущие значение совпадает с текущим ключами в структуре, то записываем в ячейку число с соответствующим ей рейнджем
+		// Если текущие значение совпадает с текущими ключами в структуре, то записываем в ячейку число с соответствующим ей рейнджем
 		if (key == cellPos) {
 			randomCount = GetRandomNumber(...hashMapCells[cellPos]) // GetRandomNumber(hashMapCells[cellPos][0], hashMapCells[cellPos][1]); a, b = [0, 1]
+			//if (cer)
 		}
 	}
 	return randomCount

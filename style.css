@@ -86,6 +86,16 @@ tr {
     grid-template-rows: repeat(1, 50px); 
 }
 
+tr:hover {
+    background-color: gray;
+}
+
+td:hover:after{
+    content: '';
+    position: absolute;
+    
+}
+
 td {
     border: 1px solid black;
     display: flex;
