@@ -16,9 +16,9 @@ function randUniqueArr(count, min, max) {
 
 let MainCircleArray = randUniqueArr(90, 1, 90);
 
-let MappedCircleArray = MainCircleArray.map(function(i){
-	return `<div>${i}</div>`;
-})
+// let MappedCircleArray = MainCircleArray.map(function(i){
+// 	return `<div>${i}</div>`;
+// })
 
 // FIXME make interval instead of setTimeout for each value    DONE
 //setInterval(() => {
@@ -26,25 +26,16 @@ let MappedCircleArray = MainCircleArray.map(function(i){
 //	// draw it
 //}, N)
 
-function CirclesFiller() {
-	let N0 = document.getElementById("MainCircle")
-		N0.innerHTML = (CirclesArray[0])
-		let N1 = document.getElementById("Circle2")
-		N1.innerHTML = (CirclesArray[1])
-		let N2 = document.getElementById("Circle3")
-		N2.innerHTML = (CirclesArray[2])
-		let N3 = document.getElementById("Circle4")
-		N3.innerHTML = (CirclesArray[3])
-		let N4 = document.getElementById("Circle5")
-		N4.innerHTML = (CirclesArray[4])
-} 
-
 let CirclesArray = [0, 0, 0, 0, 0];
 let counter = 0
 const TimerSet = setInterval(function(){
 	CirclesArray.unshift(MainCircleArray[counter]);
 	CirclesArray.splice(5, 1);
-	CirclesFiller()
+	document.getElementById("MainCircle").innerHTML = (CirclesArray[0])
+	document.getElementById("Circle2").innerHTML = (CirclesArray[1])
+	document.getElementById("Circle3").innerHTML = (CirclesArray[2])
+	document.getElementById("Circle4").innerHTML = (CirclesArray[3])
+	document.getElementById("Circle5").innerHTML = (CirclesArray[4])
 	console.log(CirclesArray)
 	
 	counter++ 

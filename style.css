@@ -9,74 +9,30 @@ h1 {
 .Circles {
     color: black;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.MainNumber {
-    margin-right: 10px;
-    margin-left: 45vh;
+#circlesStyle {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    align-items: center;
+}
+
+.Numbers {
+    display: inline-block;
     width: 70px;
     height: 70px;
     border: 2px solid;
     border-radius: 50%;
-    line-height: 37px;
-    text-align: center;
-}
-
-.Number2 {
-    margin-right: 10px;
-    margin-left: 10px;
-    width: 70px;
-    height: 70px;
-    border: 2px solid;
-    border-radius: 50%;
-    line-height: 37px;
-    text-align: center;
-}
-
-.Number3 {
-    margin-right: 10px;
-    margin-left: 10px;
-    width: 70px;
-    height: 70px;
-    border: 2px solid;
-    border-radius: 50%;
-    line-height: 37px;
-    text-align: center;
-}
-
-.Number4 {
-    margin-right: 10px;
-    margin-left: 10px;
-    width: 70px;
-    height: 70px;
-    border: 2px solid;
-    border-radius: 50%;
-    line-height: 37px;
-    text-align: center;
-}
-
-.Number5 {
-    margin-right: 10px;
-    margin-left: 10px;
-    width: 70px;
-    height: 70px;
-    border: 2px solid;
-    border-radius: 50%;
-    line-height: 37px;
-    text-align: center;
 }
 
 
 table {
-    border: 1px solid black;
-    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
     width: 452px;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 10px;
     cursor: pointer;
-    margin-left: 62vh;
 }
 
 
@@ -92,13 +48,16 @@ tr:hover {
 
 td:hover:after{
     content: '';
-    position: absolute;
     
 }
 
 td {
-    border: 1px solid black;
     display: flex;
-    align-items: center;
+    order: 1px solid black;
     justify-content: center;
+    align-items: center;
+}
+
+table, td {
+    border: 1px solid black;
 }
