@@ -8,42 +8,31 @@ function GetRandomNumber(min, max) {
 function randUniqueArr(count, min, max) {
 	let arr = [];
 	while (arr.length !== count) {
-		let rand = GetRandomNumber(min, max); // FIXME modify GetRandomNumber  DONE
+		let rand = GetRandomNumber(min, max);
 		if (arr.indexOf(rand) == -1) arr.push(rand);
 	}
 	return arr;
 }
 
-let MainCircleArray = randUniqueArr(90, 1, 90);
+let mainCircleArray = randUniqueArr(90, 1, 90);
 
-// let MappedCircleArray = MainCircleArray.map(function(i){
-// 	return `<div>${i}</div>`;
-// })
-
-// FIXME make interval instead of setTimeout for each value    DONE
-//setInterval(() => {
-//	// get element
-//	// draw it
-//}, N)
-
-let CirclesArray = [0, 0, 0, 0, 0];
+let circlesArray = [0, 0, 0, 0, 0];
 let counter = 0
 const TimerSet = setInterval(function(){
-	CirclesArray.unshift(MainCircleArray[counter]);
-	CirclesArray.splice(5, 1);
-	document.getElementById("MainCircle").innerHTML = (CirclesArray[0])
-	document.getElementById("Circle2").innerHTML = (CirclesArray[1])
-	document.getElementById("Circle3").innerHTML = (CirclesArray[2])
-	document.getElementById("Circle4").innerHTML = (CirclesArray[3])
-	document.getElementById("Circle5").innerHTML = (CirclesArray[4])
-	console.log(CirclesArray)
-	
+	circlesArray.unshift(mainCircleArray[counter]);
+	circlesArray.splice(5, 1);
+	document.getElementById("MainCircle").innerHTML = (circlesArray[0])
+	document.getElementById("Circle2").innerHTML = (circlesArray[1])
+	document.getElementById("Circle3").innerHTML = (circlesArray[2])
+	document.getElementById("Circle4").innerHTML = (circlesArray[3])
+	document.getElementById("Circle5").innerHTML = (circlesArray[4])
 	counter++ 
+	console.log(circlesArray)
 	
 	if (counter === 90){
 		clearInterval(TimerSet);
 	}
-}, 3000)
+}, 5000)
 
 
 //Создание и отрисовка строк
@@ -57,12 +46,6 @@ const renderRow = (rows, table) => {
 const renderCell = (cells, table) => {
 	const rows = table.querySelectorAll('tr')
 	rows.forEach((element) => {
-		// Переменная чекер, которая позволит выйти из цикла, когда отобразим достаточное кол-во ячеек
-		// while (enoughCells < cells) { //        FIXME make for					DONE
-		// 	let td = document.createElement('td')
-		// 	element.appendChild(td)
-		// 	enoughCells++
-		// }
 		for (let enoughCells = 0; enoughCells < cells; enoughCells++){
 			let td = document.createElement('td')
 			element.appendChild(td)
@@ -105,7 +88,7 @@ const setRandomCount = (cellPos, totalCells) => {
 		max = max + 10
 		if (max == 90){
 			max += 1
-		} // TODO support 90 in last colum             DONE
+		}
 	}
 	// Проходимся по ключам в нашей структуре данных
 	for (key in hashMapCells) {
@@ -119,7 +102,7 @@ const setRandomCount = (cellPos, totalCells) => {
 }
 
 // Главная функция, которая рендерит всю таблицу
-const renderTable = (curTable) => { // FIXME move after functions used   DONE
+const renderTable = (curTable) => {
 	const table = document.getElementById(curTable)
 	renderRow(3, table)
 	renderCell(9, table)
@@ -129,3 +112,54 @@ const renderTable = (curTable) => { // FIXME move after functions used   DONE
 renderTable('table1')
 renderTable('table2')
 renderTable('table3')
+
+
+// var sum = "";
+// document.querySelectorAll("#table tr").forEach(tr => {
+//   var cells = [];
+//   tr.querySelectorAll("td").forEach(td => cells.push(td.textContent));
+//   sum += "row=" + cells.join("&");
+// });
+
+// console.log(sum);
+
+// document.querySelectorAll("td").forEach(td => {
+// 	if (td.innerText === ""){
+// 		td.onclick = console.log("Дебил, ячейка пустая")
+// 	} else if (circlesArray.includes(td.innerText)){
+// 		td.onclick = console.log(td.innerText, "присутствует")
+// 	}
+// });
+
+//e.target
+
+// function clickFunction(event){
+// 	console.log(event.innerText)
+// 	// if (event.innerText === ""){
+// 		// 	alert("пустая")
+// 		// }
+// 		// } else if (circlesArray.includes(td.innerText)){
+// 			// 	td.onclick = console.log(td.innerText, "присутствует")
+// 			// }
+// 		}
+		
+// const td = document.querySelectorAll('td');
+// td.addEventListener('click', clickFunction)
+
+let tdm = document.querySelectorAll('td');
+for (let i = 0; i < tdm.length; i++){
+	tdm[i].addEventListener('click', function() {
+		console.log(circlesArray.includes(tdm[i].innerHTML))
+		if (tdm[i].innerHTML === "") {
+			tdm[i].style.backgroundColor = "#ff0000";
+			alert("Ячейка пустая")
+		} else if (circlesArray.includes(tdm[i].innerHTML) === new Boolean(true)) {
+			tdm[i].style.backgroundColor = "#7FFF00";
+			alert("Попал")
+		} else {
+			tdm[i].style.backgroundColor = "#FFD700";
+			alert("Этого числа нет в списке")
+			console.log(tdm[i].innerHTML)
+		}
+	})
+} 
