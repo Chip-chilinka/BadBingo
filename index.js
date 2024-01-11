@@ -149,11 +149,10 @@ renderTable('table3')
 let tdm = document.querySelectorAll('td');
 for (let i = 0; i < tdm.length; i++){
 	tdm[i].addEventListener('click', function() {
-		console.log(circlesArray.includes(tdm[i].innerHTML))
 		if (tdm[i].innerHTML === "") {
 			tdm[i].style.backgroundColor = "#ff0000";
 			alert("Ячейка пустая")
-		} else if (circlesArray.includes(tdm[i].innerHTML) === new Boolean(true)) {
+		} else if (circlesArray.includes(Number(tdm[i].innerHTML))) {
 			tdm[i].style.backgroundColor = "#7FFF00";
 			alert("Попал")
 		} else {
