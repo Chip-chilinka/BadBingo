@@ -5,7 +5,6 @@ button.onclick = function () {
 	sidebar.classList.toggle('active')
 }
 
-
 function GetRandomNumber(min, max) {
 	min = Math.ceil(min)
     max = Math.floor(max)
