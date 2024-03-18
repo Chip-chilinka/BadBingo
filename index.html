@@ -1,45 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/images/bingo.ico">
-</head>
-<body>
-    <h1>Жесткое лото</h1>
-    
-    <div class="Circles">
-        <div class="circlesStyle">
-            <div class="Numbers">
-                <p id="MainCircle">0</p>
-            </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bingo</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="/images/bingo.ico">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
             
-            <div class="Numbers">
-                <p id="Circle2">0</p>
+        <div class="sidebar">
+            <div class="top">
+                <div class="logo">
+                    <i class='bx bx-joystick'></i>
+                    <span>Жесткое лото</span>
+                </div>
+                <i class="bx bx-menu" id="button"></i>
             </div>
+            <div class="user">
+                <img src="/images/goat_in_Suspenders.jpeg" alt="userImage" class="userImg">
+                <div class="userNameBlock">
+                    <p class="userName">Bagrat M.</p>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-conversation'></i>
+                        <span class="navigation">Chat</span>
+                    </a>
+                    <span class="tooltip">Chat</span>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class='bx bx-time'></i>
+                        <span class="navigation">Timer</span>
+                    </a>
+                    <span class="tooltip">Timer</span>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class='bx bx-stats' ></i>                            
+                        <span class="navigation">Statistics</span>
+                    </a>
+                    <span class="tooltip">Statistics</span>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class='bx bx-cog' ></i>
+                        <span class="navigation">Settings</span>
+                    </a>
+                    <span class="tooltip">Settings</span>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class='bx bx-log-out'></i>
+                        <span class="navigation">Logout</span>
+                    </a>
+                    <span class="tooltip">Logout</span>
+                </li>
+            </ul>
 
-            <div class="Numbers">
-                <p id="Circle3">0</p>
-            </div>
-
-            <div class="Numbers">
-                <p id="Circle4">0</p>
-            </div>
-
-            <div class="Numbers">
-                <p id="Circle5">0</p>
-            </div>
-        </div>  
-        <div class="tickets"> 
-            <table class="container" id="table1"></table>
-            <table class="container" id="table2"></table>
-            <table class="container" id="table3"></table>
         </div>
-    </div>
+        
+        <div class="mainContent">
+        
+            <h1>Жесткое лото</h1>
+            
+            <div class="circles">
+                <div class="circlesStyle">
+                    <div class="numbers">
+                        <p class="circle" id="MainCircle">0</p>
+                    </div>
+                    
+                    <div class="numbers">
+                        <p class="circle" id="Circle2">0</p>
+                    </div>
+                        <div class="numbers">
+                            <p class="circle" id="Circle3">0</p>
+                        </div>
 
-    <script src="index.js"></script>
-</body>
+                        <div class="numbers">
+                            <p class="circle" id="Circle4">0</p>
+                        </div>
+
+                        <div class="numbers">
+                            <p class="circle" id="Circle5">0</p>
+                        </div>
+                </div>  
+
+                <div class="tickets"> 
+                    <table class="container" id="table1"></table>
+                    <table class="container" id="table2"></table>
+                    <table class="container" id="table3"></table>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
 </html>

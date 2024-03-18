@@ -1,16 +1,189 @@
 * {
     box-sizing: border-box;
-}
-
-body {
-    background-image: url("../images/backgroundBingo.avif");
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 { 
     text-align: center;
 }
 
-.Circles {
+ul {
+    padding-inline-start: 0;
+}
+
+.user {
+    margin-top: 10px;
+}
+
+.userImg {
+    aspect-ratio: 1 / 1;
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid black;
+    /*не могу отцентровать по x в сайдбаре*/
+}
+
+.userName {
+    font-size: 19px;
+    margin: 0;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: #808080;
+    padding: 7px 13px;
+    transition: all 0.5s ease;
+}
+
+/*
+.sidebar.active ~ .mainContent {
+    left: 250px;
+    width: calc(100% + 250px);
+}
+*/
+
+.sidebar.active {
+    width: 250px;
+}
+
+.sidebar #button {
+    position: absolute;
+    color: black;
+    left: 50%;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 50%;
+    transform: translateX(-50%);
+    transition: all 1s ease;
+}
+
+.sidebar.active #button {
+    position: absolute;
+    font-size: 30px;
+    left: 90%;
+    transition: all 1s ease;
+}
+
+.logo {
+    margin-top: 20px;
+}
+
+.sidebar .top .logo {
+    display: flex;
+    color: black;
+    height: 50%;
+    width: 100%;
+    font-size: 20px;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.2s;
+    margin-top: 0;
+}
+
+.sidebar.active .top .logo {
+    transition: all 2s;
+    opacity: 1;
+}
+
+.top {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.top .logo i {
+    font-size: 30px;
+    margin-right: 5px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.userName {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s;
+}
+
+.sidebar.active p {
+    opacity: 1;
+    transition: all 2s;
+}
+
+.sidebar ul li {
+    position: relative;
+    list-style-type: none;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 19px;
+    margin: 13px auto;
+}
+
+.sidebar ul li a {
+    display: flex;
+    color: black;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 13px;
+}
+
+.sidebar ul li a:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.8s;
+}
+
+.sidebar ul li a i {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+}
+
+.navigation {
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.sidebar.active .navigation {
+    opacity: 1;
+    transition: all 2s;
+}
+
+.sidebar ul li .tooltip {
+    position: absolute;
+    left: 100px;
+    top: 7%;
+    transform: translate(-50% -50%);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 7px 20px;
+    line-height: 29px;
+    z-index: 100;
+    opacity: 0;
+}
+
+.sidebar ul li:hover .tooltip {
+    opacity: 1;
+    transition: all 0.8s;
+}
+
+.sidebar.active ul li:hover .tooltip {
+    opacity: 0;
+}
+
+.circles {
     color: black;
     display: flex;
     flex-direction: column;
@@ -27,7 +200,7 @@ h1 {
     gap: 30px;
 }
 
-.Numbers {
+.numbers {
     display: flex;
     flex-shrink: 0;
     width: 70px;

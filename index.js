@@ -1,3 +1,11 @@
+let button = document.querySelector('#button')
+let sidebar = document.querySelector('.sidebar')
+
+button.onclick = function () {
+	sidebar.classList.toggle('active')
+}
+
+
 function GetRandomNumber(min, max) {
 	min = Math.ceil(min)
     max = Math.floor(max)
@@ -5,11 +13,20 @@ function GetRandomNumber(min, max) {
     return Math.floor(number)
 }
 
+// function randUniqueArr(count, min, max) {    // C Set все нахуя не работает
+// 	let arr = new Set();
+// 	while (arr.length !== count) {
+// 		let rand = GetRandomNumber(min, max);
+// 		arr.add(rand)
+// 	}
+// 	return arr;
+// }
+
 function randUniqueArr(count, min, max) {
-	let arr = [];
-	while (arr.length !== count) {
+	let arr = []; // can be set
+	while (arr.length !== count) { 
 		let rand = GetRandomNumber(min, max);
-		if (arr.indexOf(rand) == -1) arr.push(rand);
+		if (arr.indexOf(rand) == -1) arr.push(rand); //уберет if
 	}
 	return arr;
 }
@@ -17,19 +34,14 @@ function randUniqueArr(count, min, max) {
 let mainCircleArray = randUniqueArr(90, 1, 90);
 
 let circlesArray = [0, 0, 0, 0, 0];
-let counter = 0
 const TimerSet = setInterval(function(){
-	circlesArray.unshift(mainCircleArray[counter]);
-	circlesArray.splice(5, 1);
-	document.getElementById("MainCircle").innerHTML = (circlesArray[0])
-	document.getElementById("Circle2").innerHTML = (circlesArray[1])
-	document.getElementById("Circle3").innerHTML = (circlesArray[2])
-	document.getElementById("Circle4").innerHTML = (circlesArray[3])
-	document.getElementById("Circle5").innerHTML = (circlesArray[4])
-	counter++ 
-	console.log(circlesArray)
+	circlesArray.unshift(mainCircleArray.pop());
+	circlesArray.pop();
+	document.querySelectorAll(".circle").forEach((element, i) => {
+		element.innerHTML = circlesArray[i]
+	})
 	
-	if (counter === 90){
+	if (!mainCircleArray.length){
 		clearInterval(TimerSet);
 	}
 }, 5000)
@@ -52,26 +64,25 @@ const renderCell = (cells, table) => {
 		}
 	})
 }
-const renderRandomCount = (table) => {
-	const rows = table.querySelectorAll('tr')
-	// проходимся по каждой строке
-	rows.forEach((element) => {
-		// Получаем все ячейки этой строки
+
+const renderRandomCount = (table) => 
+	table.querySelectorAll('tr').forEach((element) => {
 		const cells = element.querySelectorAll('td')
-		// Создаем set из 5 уникальных цифр (каждая строка должна содержать 5 рандомных заполненных ячеек)
 		const randomPos = new Set()
 		while (randomPos.size !== 5) {
 			randomPos.add(GetRandomNumber(0, 9))
 		}
-		// Проходимся по каждой ячейке одной строки
+		
 		cells.forEach((element, indexCell) => {
 			// Если рандомная позиция совпадает с текущей ячейкой, то тогда вписываем в него число
-			randomPos.has(indexCell)
-			? (element.textContent = setRandomCount(indexCell, 9))
-			: null
+			if (randomPos.has(indexCell)) {
+				if (indexCell === 0) return element.textContent = GetRandomNumber(1, 9);
+				element.textContent = GetRandomNumber(indexCell * 10, indexCell * 10 + (indexCell === 8 ? 10 : 9))
+			}
 		})
 	})
-}
+
+
 const setRandomCount = (cellPos, totalCells) => {
 	let randomCount
 	// Подготовка структуры данных для позиции ячейки с ее определенным рейнджем для генерации
@@ -146,19 +157,21 @@ renderTable('table3')
 // const td = document.querySelectorAll('td');
 // td.addEventListener('click', clickFunction)
 
-let tdm = document.querySelectorAll('td');
-for (let i = 0; i < tdm.length; i++){
-	tdm[i].addEventListener('click', function() {
-		if (tdm[i].innerHTML === "") {
-			tdm[i].style.backgroundColor = "#ff0000";
-			alert("Ячейка пустая")
-		} else if (circlesArray.includes(Number(tdm[i].innerHTML))) {
-			tdm[i].style.backgroundColor = "#7FFF00";
-			alert("Попал")
-		} else {
-			tdm[i].style.backgroundColor = "#FFD700";
-			alert("Этого числа нет в списке")
-			console.log(tdm[i].innerHTML)
+document.querySelectorAll('td').forEach((element) => 
+	element.addEventListener('click', () => {
+		if (!element.innerHTML.length) {
+			element.style.backgroundColor = "#ff0000";
+			return alert("Ячейка пустая")
 		}
+		
+		if (circlesArray.includes(Number(element.innerHTML))) {
+			element.style.backgroundColor = "#7FFF00";
+			return alert("Попал")
+		}
+
+		element.style.backgroundColor = "#FFD700";
+		alert("Этого числа нет в списке")
 	})
-} 
+)
+
+
